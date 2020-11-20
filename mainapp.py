@@ -162,20 +162,20 @@ while True:
         blpoints.append(deque(maxlen=512))
         black_index += 1
 
-        # Draw lines of all the colors on the canvas and frame 
-        points = [bpoints, gpoints, rpoints, blpoints]
-        for i in range(len(points)):
-            for j in range(len(points[i])):
-                for k in range(1, len(points[i][j])):
-                    if points[i][j][k - 1] is None or points[i][j][k] is None:
-                        continue
-                    cv2.line(img, points[i][j][k - 1], points[i][j][k], colors[i], 2)
-                    cv2.line(paintWin, points[i][j][k - 1], points[i][j][k], colors[i], 2)
+    # Draw lines of all the colors on the canvas and frame 
+    points = [bpoints, gpoints, rpoints, blpoints]
+    for i in range(len(points)):
+        for j in range(len(points[i])):
+            for k in range(1, len(points[i][j])):
+                if points[i][j][k - 1] is None or points[i][j][k] is None:
+                    continue
+                cv2.line(img, points[i][j][k - 1], points[i][j][k], colors[i], 2)
+                cv2.line(paintWin, points[i][j][k - 1], points[i][j][k], colors[i], 2)
 
     cv2.imshow("Air Canvas",img)
     cv2.imshow("Mask",mask)
     cv2.imshow("Paint", paintWin)
-    if cv2.waitKey(50) & 0xFF == ord('q'):
+    if cv2.waitKey(5) & 0xFF == ord('q'):
         break
 
 cap.release()
